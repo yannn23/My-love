@@ -3,24 +3,12 @@ var days = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
 var months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
 var hours = date.getHours();
 var minutes = date.getMinutes();
-
-// Tambahkan awalan nol jika jam atau menit kurang dari 10
 if (hours < 10) {hours = "0" + hours;}
 if (minutes < 10) {minutes = "0" + minutes;}
-
 var day = days[date.getDay()];
 var dateNum = date.getDate();
 var month = months[date.getMonth()];
 var year = date.getFullYear();
-
-console.log(hours + "." + minutes + " WIB - " + day + ", " + dateNum + " " + month + " " + year);
-
-var element = document.querySelector("body");var watermark = document.createElement("div");
-
-// Setel teks watermark dan propertinya
-watermark.textContent = day + ", " + dateNum + " " + month + " " + year;
-watermark.style = "color:white;opacity:.5;font-size:10px;position:fixed;bottom:25px;left:25px;z-index:150";
-element.appendChild(watermark);
 
 //////////////////////////////////////////////////
 
@@ -54,7 +42,6 @@ function tes(){
   
 function aksiakhir() {
   if(fungsiklik==0){
-    //wpakhir.style="opacity:.75;transition:all 1s ease;";
     fungsiklik=1;
     setTimeout(katajudul,100)
   }
@@ -82,12 +69,8 @@ function katakata(){
 function teksmuncul(){
 	judulakhir.innerHTML=teksjudulakhir2;
 	judulakhir.style="font-family:var(--gaya-font3);font-size:27px";
-	//setTimeout(jjteksnim,300);
-	stikerakhir.style="opacity:0;transform:scale(0)";
-	setTimeout(gantifotoakhir,400);
+	stikerakhir.src=stikerakhir2.src;stikerakhir.style="";
 }
-function jjteksnim(){judulakhir.style.animation="rto .8s infinite alternate";}
-function gantifotoakhir(){stikerakhir.src=stikerakhir2.src;stikerakhir.style="";}
 function kataakhir(){
 	  new TypeIt("#palingakhir", {
       strings: ["" + tekspalingakhir], startDelay: 50, speed: 50, cursor: true,
@@ -102,14 +85,12 @@ function menuju(){if(fungtom2==1){window.location = "https://api.whatsapp.com/se
 tinggi = iniakhir.offsetHeight;
 function tentukantinggi(){tinggi = iniakhir.offsetHeight;}
 setInterval(tentukantinggi,200);
-console.log(tinggi);
 
 fungsiAud=0;function playaud(){if(fungsiAud==0){fungsiAud=1;audio.play();}}
 function keatas(){window.scrollTo(0, 0);}
  window.addEventListener("load", (event) => {
     window.scrollTo(0, 0);
     setTimeout(keatas,500);
-    
     var overlay = document.querySelector(".overlay");
     overlay.style.display = "none";
     initom.style="";
@@ -126,14 +107,10 @@ function keatas(){window.scrollTo(0, 0);}
     document.addEventListener('scroll', function(e) {
         let documentHeight = document.body.scrollHeight;
         let currentScroll = window.scrollY + window.innerHeight;
-        // When the user is [modifier]px from the bottom, fire the event.
         let modifier = 200; 
         if(currentScroll + modifier > documentHeight) {
-            console.log('Sudah sampai bawah!');
             initom.style="opacity:0;bottom:0";
             setTimeout(aksiakhir,10);
-        } else {
-            //initom.style="";
         }
     })
 })
